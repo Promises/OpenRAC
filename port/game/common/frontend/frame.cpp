@@ -3888,9 +3888,9 @@ bool frame(std::span<const std::uint8_t> ram, std::uint32_t chain, std::uint32_t
     const auto pause_mode = g->render.profile->pause_mode();
     const auto freeze_mode = g->render.profile->freeze_mode();
     const bool has_mode_now = openrac_game_mode != nullptr && openrac_game_mode(&mode_now) != 0;
-    const bool paused = has_mode_now
-                        && ((pause_mode && mode_now == *pause_mode)
-                            || (freeze_mode && mode_now == *freeze_mode));
+    const bool paused =
+        has_mode_now
+        && ((pause_mode && mode_now == *pause_mode) || (freeze_mode && mode_now == *freeze_mode));
     if (under_menu || paused) {
         g->kept->gameplay_camera = g->paused_from_play;
     } else if (world_ran) {
